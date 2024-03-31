@@ -8,7 +8,7 @@
         //Дата операции
         public DateTime? Date { get; set; }
         //Количество денег потраченных или заработанных
-        public string? Sum { get; set; }
+        public decimal? Sum { get; set; }
         //Вид движения денежных средств
         public string? Ante { get; set; }
         //Причина движения денежных средств
