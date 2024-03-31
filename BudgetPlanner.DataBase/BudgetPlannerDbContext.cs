@@ -9,6 +9,6 @@ namespace BudgetPlanner.DataBase
         public BudgetPlannerDbContext(DbContextOptions<BudgetPlannerDbContext> options)
             : base(options) { }
 
-        DbSet<OperationEntity> Operations { get; set; }
+        public DbSet<OperationEntity> Operations { get; set; }
     }
 }
