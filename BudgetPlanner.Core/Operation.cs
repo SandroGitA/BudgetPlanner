@@ -10,7 +10,7 @@
         //Количество денег потраченных или заработанных
         public decimal Sum { get; }
         //Вид движения денежных средств
-        public string? Ante { get; } = string.Empty;
+        public string? Type { get; } = string.Empty;
         //Причина движения денежных средств
         public string? Reason { get; } = string.Empty;
 
@@ -20,25 +20,25 @@
         /// <param name="id">Идентификатор операции</param>
         /// <param name="dateTime">Дата операции</param>
         /// <param name="sum">Сумма операции</param>
-        /// <param name="ante">Тип операции</param>
+        /// <param name="type">Тип операции</param>
         /// <param name="reason">Причина операции</param>
-        private Operation(Guid id, DateTime dateTime, decimal sum, string ante, string reason)
+        private Operation(Guid id, DateTime dateTime, decimal sum, string type, string reason)
         {
             ID = id;
             Date = dateTime;
             Sum = sum;
-            Ante = ante;
+            Type = type;
             Reason = reason;
         }
 
         //Валидация при создании операции
-        public static Operation CreateOperation(decimal sum, string ante, string reason)
+        public static Operation CreateOperation(decimal sum, string type, string reason)
         {
             //Поле дата и id создаются сами в момент совершения операции
             Guid id = Guid.NewGuid();
             DateTime dateTime = DateTime.Now;
 
-            var operation = new Operation(id, dateTime, sum, ante, reason);
+            var operation = new Operation(id, dateTime, sum, type, reason);
 
             return operation;
         }

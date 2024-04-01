@@ -19,7 +19,7 @@ namespace BudgetPlanner.DataBase.Configurations
             builder.Property(s => s.Sum)
                 .IsRequired();
 
-            builder.Property(a => a.Ante)
+            builder.Property(a => a.Type)
                 .IsRequired();
 
             builder.Property(r => r.Reason)

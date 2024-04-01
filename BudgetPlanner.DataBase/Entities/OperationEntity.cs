@@ -10,7 +10,7 @@
         //Количество денег потраченных или заработанных
         public decimal? Sum { get; set; }
         //Вид движения денежных средств
-        public string? Ante { get; set; }
+        public string? Type { get; set; }
         //Причина движения денежных средств
         public string? Reason { get; set; }
     }
