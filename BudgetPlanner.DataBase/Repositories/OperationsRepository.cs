@@ -15,9 +15,12 @@ namespace BudgetPlanner.DataBase.Repositories
         }
 
         //Метод возврата всех операции
-        public List<OperationEntity> Get()
+        public List<Operation> Get()
         {
-            var operations = _context.Operations.AsNoTracking().ToList();
+            var operationsEntities = _context.Operations.AsNoTracking().ToList();
+
+            var operations = operationsEntities
+                .Select(o => Operation.CreateOperation(o.Sum, o.Type, o.Reason)).ToList();
 
             return operations;
         }
