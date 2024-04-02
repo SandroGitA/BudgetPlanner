@@ -1,4 +1,7 @@
+using BudgetPlanner.Application;
+using BudgetPlanner.Core;
 using BudgetPlanner.DataBase;
+using BudgetPlanner.DataBase.Repositories;
 using BudgetPlanner.Logic;
 using Microsoft.AspNetCore.Authentication.Certificate;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -19,6 +22,9 @@ builder.Services.AddDbContext<BudgetPlannerDbContext>(
         options.UseNpgsql("Host=localhost;Username=postgres;Password=SkyCote36;Database=bpdbtest546456456");
     });
 
+//Добавление сервисов
+builder.Services.AddScoped<BudgetPlannerService>();
+builder.Services.AddScoped<OperationsRepository>();
 
 //Подключение авторизации на основе JWT
 builder.Services.AddAuthorization();
