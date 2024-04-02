@@ -23,7 +23,7 @@ builder.Services.AddDbContext<BudgetPlannerDbContext>(
     });
 
 //Добавление сервисов
-builder.Services.AddScoped<BudgetPlannerService>();
+builder.Services.AddScoped<OperationsService>();
 builder.Services.AddScoped<OperationsRepository>();
 
 //Подключение авторизации на основе JWT
