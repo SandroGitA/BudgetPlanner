@@ -6,13 +6,13 @@
         //ID операции
         public Guid ID { get; }
         //Дата операции
-        public DateTime? Date { get; }
+        public DateTime Date { get; }
         //Количество денег потраченных или заработанных
         public decimal Sum { get; }
         //Вид движения денежных средств
-        public string? Type { get; } = string.Empty;
+        public string Type { get; } = string.Empty;
         //Причина движения денежных средств
-        public string? Reason { get; } = string.Empty;
+        public string Reason { get; } = string.Empty;
 
         /// <summary>
         /// Конструктор
