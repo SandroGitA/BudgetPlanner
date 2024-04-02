@@ -1,6 +1,5 @@
-﻿using BudgetPlanner.Application;
-using BudgetPlanner.Core;
-using Microsoft.AspNetCore.Http;
+﻿using BudgetPlanner.API.FrontendData;
+using BudgetPlanner.Application;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BudgetPlanner.API.Controllers
@@ -9,9 +8,21 @@ namespace BudgetPlanner.API.Controllers
     [ApiController]
     public class OperationsController : ControllerBase
     {
+        private readonly OperationsService _operationsService;
+
         public OperationsController(OperationsService operationsService)
         {
-            
+            _operationsService = operationsService;
+        }
+
+        [HttpGet]
+        public ActionResult<List<OperationsResponse>> GetOperations()
+        {
+            var operations = _operationsService.GetOperations();
+
+            var response = operations.Select(o => new OperationsResponse(o.ID, o.Date, o.Sum, o.Type, o.Reason));
+
+            return Ok(response);
         }
     }
 }
