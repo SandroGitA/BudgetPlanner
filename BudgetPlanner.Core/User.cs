@@ -5,13 +5,10 @@
     {
         //ID пользователя
         public Guid ID { get; set; }
-
         //username пользователя
         public string UserName { get; private set; }
-
         //Захешированный пароль пользователя
         public string PasswordHash { get; private set; }
-
         //mail пользователя
         public string Email { get; private set; }
 
