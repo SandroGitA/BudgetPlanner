@@ -10,5 +10,6 @@ namespace BudgetPlanner.DataBase
             : base(options) { }
 
         public DbSet<OperationEntity> Operations { get; set; }
+        public DbSet<UserEntity> Users { get; set; }
     }
 }
