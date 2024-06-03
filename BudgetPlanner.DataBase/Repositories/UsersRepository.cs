@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 namespace BudgetPlanner.DataBase.Repositories
 {
     //Класс репозитория для CRUD операции с пользователяvми
-    class UsersRepository
+    public class UsersRepository
     {
         private readonly BudgetPlannerDbContext _context;
 
