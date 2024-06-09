@@ -20,6 +20,7 @@ namespace BudgetPlanner.Application
             _passwordHasher = passwordHasher;
         }
 
+        //Метод для регистрации пользователя
         public void Register(string username, string email, string password)
         {
             var hashPassword = _passwordHasher.Hashed(password);
@@ -27,6 +28,21 @@ namespace BudgetPlanner.Application
             var user = User.CreateUser(Guid.NewGuid(), username, hashPassword, email);
 
             _usersRepository.AddUser(user);
+        }
+
+        //Метод для логина пользователя
+        public string Login(string email, string password)
+        {
+            var user = _usersRepository.GetUserByEmail(email);
+
+            var result = _passwordHasher.Verify(password, user.PasswordHash);
+
+            if (result == false)
+            {
+                throw new Exception("Failed to login");
+            }
+
+            return "";
         }
     }
 }
