@@ -13,11 +13,16 @@ namespace BudgetPlanner.Application
     {
         private readonly UsersRepository _usersRepository;
         private readonly PasswordHasher _passwordHasher;
+        private readonly JWTProvider _jWTProvider;
 
-        public UsersService(UsersRepository usersRepository, PasswordHasher passwordHasher)
+        public UsersService(
+            UsersRepository usersRepository,
+            PasswordHasher passwordHasher,
+            JWTProvider jWTProvider)
         {
             _usersRepository = usersRepository;
             _passwordHasher = passwordHasher;
+            _jWTProvider = jWTProvider;
         }
 
         //Метод для регистрации пользователя
@@ -42,7 +47,9 @@ namespace BudgetPlanner.Application
                 throw new Exception("Failed to login");
             }
 
-            return "";
+            var token =_jWTProvider.GenerateToken(user);
+
+            return token;
         }
     }
 }
