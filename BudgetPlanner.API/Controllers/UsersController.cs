@@ -8,17 +8,8 @@ namespace BudgetPlanner.API.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        //Метод логина пользователя
-        public IResult Login(
-            LoginUserRequest request,
-            UsersService usersService)
-        {
-            var token = usersService.Login(request.Email, request.Password);
-
-            return Results.Ok();
-        }
-
         //Метод регистрации пользователя
+        [HttpPost("register")]
         public IResult Register(
             RegisterUserRequest request,
             UsersService usersService)
@@ -26,6 +17,17 @@ namespace BudgetPlanner.API.Controllers
             usersService.Register(request.Username, request.Email, request.Password);
 
             return Results.Ok();
+        }
+
+        //Метод логина пользователя
+        [HttpPost("login")]
+        public IResult Login(
+            LoginUserRequest request,
+            UsersService usersService)
+        {
+            var token = usersService.Login(request.Email, request.Password);
+
+            return Results.Ok(token);
         }
     }
 }
