@@ -6,6 +6,6 @@
         public string ISSUER { get; set; } = string.Empty;
         public string AUDIENCE { get; set; } = string.Empty;
         public string KEY { get; set; } = string.Empty;
-        public int EXPITESHOURS { get; set; }
+        public int EXPIRESHOURS { get; set; }
     }
 }

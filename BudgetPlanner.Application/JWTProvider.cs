@@ -28,7 +28,7 @@ namespace BudgetPlanner.Application
             var token = new JwtSecurityToken(
                 claims: claims,
                 signingCredentials: signingCredentials,
-                expires: DateTime.UtcNow.AddHours(_options.EXPITESHOURS),
+                expires: DateTime.UtcNow.AddHours(_options.EXPIRESHOURS),
                 issuer: _options.ISSUER,
                 audience: _options.AUDIENCE);
 
