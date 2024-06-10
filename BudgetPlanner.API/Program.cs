@@ -24,32 +24,40 @@ builder.Services.AddDbContext<BudgetPlannerDbContext>(
 
 //Добавление сервисов
 builder.Services.AddScoped<OperationsService>();
+builder.Services.AddScoped<UsersService>();
+
+//Добавление репозиториев
 builder.Services.AddScoped<OperationsRepository>();
+builder.Services.AddScoped<UsersRepository>();
+
+builder.Services.AddScoped<PasswordHasher>();
+builder.Services.AddScoped<JWTProvider>();
 
 //Подключение авторизации на основе JWT
 builder.Services.AddAuthorization();
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options =>
-    {
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            //указывает, будет ли валидироваться издатель при валидации токена
-            ValidateIssuer = true,
-            //строка, представляющая издателя
-            ValidIssuer = AuthOptions.ISSUER,
-            //будет ли валидироваться потребитель токена
-            ValidateAudience = true,
-            //установка потребителя токена
-            ValidAudience = AuthOptions.AUDIENCE,
-            //будет ли валидироваться время существования
-            ValidateLifetime = true,
-            //установка ключа безопасности
-            IssuerSigningKey = AuthOptions.GetSymmetricSecurityKey(),
-            //валидация ключа безопасности
-            ValidateIssuerSigningKey = true,
+builder.Services.AddAuthentication();
+//builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+//    .AddJwtBearer(options =>
+//    {
+//        options.TokenValidationParameters = new TokenValidationParameters
+//        {
+//            //указывает, будет ли валидироваться издатель при валидации токена
+//            ValidateIssuer = true,
+//            //строка, представляющая издателя
+//            ValidIssuer = AuthOptions.ISSUER,
+//            //будет ли валидироваться потребитель токена
+//            ValidateAudience = true,
+//            //установка потребителя токена
+//            ValidAudience = AuthOptions.AUDIENCE,
+//            //будет ли валидироваться время существования
+//            ValidateLifetime = true,
+//            //установка ключа безопасности
+//            IssuerSigningKey = AuthOptions.GetSymmetricSecurityKey(),
+//            //валидация ключа безопасности
+//            ValidateIssuerSigningKey = true,
 
-        };
-    });
+//        };
+//    });
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -78,4 +86,5 @@ app.UseCors(
 app.UseAuthorization();
 app.MapControllers();
 
-app.Run("http://*:8888");
+//app.Run("http://*:8888");
+app.Run();
