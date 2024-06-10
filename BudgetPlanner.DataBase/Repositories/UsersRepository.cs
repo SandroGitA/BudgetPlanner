@@ -29,12 +29,12 @@ namespace BudgetPlanner.DataBase.Repositories
             _context.SaveChanges();
         }
 
-        //Метод для поиска ползователя по email
-        public UserEntity GetUserByEmail(string email)
+        //Метод для поиска пользователя по email
+        public User GetUserByEmail(string email)
         {
             var userEntity = _context.Users.AsNoTracking().FirstOrDefault(u => u.Email == email);
 
-            return userEntity;
+            return User.CreateUser(userEntity.ID, userEntity.UserName, userEntity.PasswordHash, userEntity.Email);
         }
     }
 }
