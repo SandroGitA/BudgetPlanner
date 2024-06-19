@@ -1,5 +1,6 @@
 ﻿using BudgetPlanner.API.FrontendData;
 using BudgetPlanner.Application;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BudgetPlanner.API.Controllers
@@ -16,6 +17,7 @@ namespace BudgetPlanner.API.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult<List<OperationsResponse>> GetOperations()
         {
             var operations = _operationsService.GetOperations();
