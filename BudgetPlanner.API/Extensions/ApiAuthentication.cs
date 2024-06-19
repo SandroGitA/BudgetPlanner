@@ -10,7 +10,8 @@ namespace BudgetPlanner.API.Extensions
     public static class ApiAuthentication
     {
         public static void AddApiAuthentication(
-            this IServiceCollection services, IConfiguration configuration)
+            this IServiceCollection services,
+            IConfiguration configuration)
         {
             //Получаем опции
             JWTOptions? jwtOptions = configuration.GetSection(nameof(JWTOptions)).Get<JWTOptions>();
