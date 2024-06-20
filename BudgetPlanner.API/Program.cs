@@ -29,7 +29,6 @@ builder.Services.AddScoped<JWTProvider>();
 //Подключение метода рсширения авторизации
 builder.Services.AddApiExtensions(builder.Configuration);
 
-
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -51,6 +50,12 @@ app.UseCors(
     .AllowAnyHeader()
     .AllowAnyMethod()
     );
+
+app.UseCookiePolicy(new CookiePolicyOptions
+{
+    MinimumSameSitePolicy = SameSiteMode.Strict,
+    Secure = CookieSecurePolicy.Always
+});
 
 app.UseAuthentication();
 app.UseAuthorization();
