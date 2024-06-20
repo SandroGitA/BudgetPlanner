@@ -28,6 +28,15 @@ namespace BudgetPlanner.API.Extensions
                         IssuerSigningKey = new SymmetricSecurityKey(
                             Encoding.UTF8.GetBytes(jwtOptions?.KEY))
                     };
+
+                    options.Events = new JwtBearerEvents()
+                    {
+                        OnMessageReceived = context =>
+                        {
+                            context.Token = context.Request.Cookies["tkn"];
+                            return Task.CompletedTask;
+                        }
+                    };
                 });
 
             services.AddAuthorization();
