@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BudgetPlanner.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
     {
@@ -27,7 +27,10 @@ namespace BudgetPlanner.API.Controllers
         {
             var token = usersService.Login(request.Email, request.Password);
 
-            return Results.Ok(token);
+            var context = HttpContext;
+            context.Response.Cookies.Append("tkn", token);
+
+            return Results.Ok();
         }
     }
 }
