@@ -1,5 +1,6 @@
 using BudgetPlanner.API.Extensions;
 using BudgetPlanner.Application;
+using BudgetPlanner.Application.Services;
 using BudgetPlanner.DataBase;
 using BudgetPlanner.DataBase.Repositories;
 using Microsoft.EntityFrameworkCore;
