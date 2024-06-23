@@ -1,5 +1,5 @@
 ﻿using BudgetPlanner.API.DTO;
-using BudgetPlanner.Application;
+using BudgetPlanner.Application.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BudgetPlanner.API.Controllers

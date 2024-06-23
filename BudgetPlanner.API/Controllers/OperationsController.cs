@@ -1,5 +1,5 @@
 ﻿using BudgetPlanner.API.FrontendData;
-using BudgetPlanner.Application;
+using BudgetPlanner.Application.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
