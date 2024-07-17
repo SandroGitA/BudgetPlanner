@@ -1,7 +1,7 @@
 ﻿using BudgetPlanner.Core;
 using BudgetPlanner.DataBase.Repositories;
 
-namespace BudgetPlanner.Application
+namespace BudgetPlanner.Application.Services
 {
     //Класс для описания логики приложения для связи с контроллерами
     public class OperationsService
