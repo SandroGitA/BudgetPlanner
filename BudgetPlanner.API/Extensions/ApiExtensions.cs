@@ -14,7 +14,11 @@ namespace BudgetPlanner.API.Extensions
 
             JWTOptions? jwtOptions = configuration.GetSection(nameof(JWTOptions)).Get<JWTOptions>();
 
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            services
+                .AddAuthentication(options =>
+                {
+                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                })
                 .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
                 {
                     options.TokenValidationParameters = new()
