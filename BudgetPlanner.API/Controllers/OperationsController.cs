@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BudgetPlanner.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/")]
     [ApiController]
     public class OperationsController : ControllerBase
     {
@@ -16,7 +16,7 @@ namespace BudgetPlanner.API.Controllers
             _operationsService = operationsService;
         }
 
-        [HttpGet]
+        [HttpGet("operations")]
         [Authorize]
         public ActionResult<List<OperationsResponse>> GetOperations()
         {

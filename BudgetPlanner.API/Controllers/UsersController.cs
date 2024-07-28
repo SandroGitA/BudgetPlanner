@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BudgetPlanner.API.Controllers
 {
-    [Route("api/v1/[controller]")]
+    [Route("api/v1/")]
     [ApiController]
     public class UsersController : ControllerBase
     {
