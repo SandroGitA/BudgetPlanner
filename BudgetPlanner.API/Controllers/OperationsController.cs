@@ -16,8 +16,9 @@ namespace BudgetPlanner.API.Controllers
             _operationsService = operationsService;
         }
 
+        //Получение всех операции
         [HttpGet("operations")]
-        [Authorize]
+        //[Authorize]
         public ActionResult<List<OperationsResponse>> GetOperations()
         {
             var operations = _operationsService.GetOperations();
@@ -25,6 +26,27 @@ namespace BudgetPlanner.API.Controllers
             var response = operations.Select(o => new OperationsResponse(o.ID, o.Date, o.Sum, o.Type, o.Reason));
 
             return Ok(response);
+        }
+
+        //Добавление операции
+        [HttpPost("add")]
+        public ActionResult AddOperation()
+        {
+            return Ok();
+        }
+
+        //Удаление операции
+        [HttpPost("delete")]
+        public ActionResult DeleteOperation()
+        {
+            return Ok();
+        }
+
+        //Изменение операции
+        [HttpPost("edit")]
+        public ActionResult EditOperation()
+        {
+            return Ok();
         }
     }
 }
