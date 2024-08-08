@@ -28,19 +28,43 @@ namespace BudgetPlanner.DataBase.Repositories
         //Метод создания операции
         public Guid Create(Operation operation)
         {
-            return Guid.NewGuid();
+            var operationEntity = new OperationEntity
+            {
+                ID = operation.ID,
+                Reason = operation.Reason,
+                Sum = operation.Sum,
+                Type = operation.Type,
+                Date = operation.Date,
+            };
+
+            _context.Operations.Add(operationEntity);
+            _context.SaveChanges();
+
+            return operationEntity.ID;
         }
 
         //Метод изменения операции
-        public Guid Update(Guid guid)
+        public Guid Update(Guid guid, string reason, decimal sum, string type, DateTime date)
         {
-            return Guid.NewGuid();
+            _context.Operations
+                .Where(o => o.ID == guid)
+                .ExecuteUpdate(s => s
+                    .SetProperty(o => o.Sum, o => sum)
+                    .SetProperty(o => o.Type, o => type)
+                    .SetProperty(o => o.Reason, o => reason)
+                    .SetProperty(o => o.Date, o => date));
+
+            return guid;
         }
 
         //Метод удаления операции
         public Guid Delete(Guid guid)
         {
-            return Guid.NewGuid();
+            _context.Operations
+                .Where(o => o.ID == guid)
+                .ExecuteDelete();
+
+            return guid;
         }
     }
 }
