@@ -20,7 +20,7 @@ namespace BudgetPlanner.DataBase.Repositories
             var operationsEntities = _context.Operations.AsNoTracking().ToList();
 
             var operations = operationsEntities
-                .Select(o => Operation.CreateOperation(o.Sum, o.Type, o.Reason)).ToList();
+                .Select(o => Operation.CreateOperation(o.ID, o.Sum, o.Type, o.Reason)).ToList();
 
             return operations;
         }
