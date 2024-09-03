@@ -35,7 +35,8 @@ namespace BudgetPlanner.API.Controllers
         [HttpPost("add")]
         public ActionResult<Guid> AddOperation([FromBody] OperationsRequest request)
         {
-            var operation = Operation.CreateOperation(request.Sum, request.Type, request.Reason);
+            var guid = Guid.NewGuid();
+            var operation = Operation.CreateOperation(guid, request.Sum, request.Type, request.Reason);
             var operationID = _operationsService.CreateOperation(operation);
 
             return Ok(operationID);
