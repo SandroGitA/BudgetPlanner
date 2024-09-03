@@ -32,13 +32,13 @@
         }
 
         //Валидация при создании операции
-        public static Operation CreateOperation(decimal sum, string type, string reason)
+        public static Operation CreateOperation(Guid guid, decimal sum, string type, string reason)
         {
             //Поле дата и id создаются сами в момент совершения операции
-            Guid id = Guid.NewGuid();
+            //Guid id = Guid.NewGuid();
             DateTime dateTime = DateTime.Now;
 
-            var operation = new Operation(id, dateTime, sum, type, reason);
+            var operation = new Operation(guid, dateTime, sum, type, reason);
 
             return operation;
         }
